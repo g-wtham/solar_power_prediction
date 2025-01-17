@@ -11,6 +11,54 @@ The system integrates three different regression models: Linear Regression, Rand
  **My Locality - Random Forest Method - Grafana Dashboard**   <br><br>
 <img src="predictions_results/My%20Locality%20-%20Grafana%20Dashboard%20.png" height="300">
 
+---
+
+## Installation Instructions
+
+### Prerequisites
+- **Python 3.11+**
+- **PostgreSQL**
+- **Grafana**
+
+Install all packages using this : ```pip install numpy pandas scikit-learn matplotlib psycopg2```
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/g-wtham/solar_power_prediction.git
+cd solar_power_prediction
+```
+
+### Step 2: Set Up PostgreSQL
+1. Create a PostgreSQL database:
+    ```sql
+    CREATE DATABASE solar_power_prediction;
+    ```
+2. Configure the database tables with the respective table names as per the in the `random_forest.py` file given.
+
+### Step 3: Connect Python to Postgres using Psycopg2 package
+1. Define postgres database username and password (default-username: postgress; password: root)
+2. psycopg2 is used for postgres to python connection
+
+### Step 4: Install Grafana and select the data source (select postgresql)
+1. Install Grafana (https://grafana.com/grafana/download) and set up username and password (default username & password: admin)
+2. Navigate to `locahost:3000`, select postgresql as the data source and build dashboards by selecting the corresponding tables from the connected pg database.
+3. Toggle the `order` setting 'ON' and set _custom limit_, as default is 50 and can hinder if more data points are plotted.
+4. You can export the dashboards as JSON files as well for preserving the templates for external sharing.
+
+### Step 5: Run the System
+1. Train the model:
+   ```bash
+   python random_forest.py 
+   ```
+2. For getting the plots & metrics for the model:
+   ```bash
+   python random_forest-metrics.py
+   ```
+3. Visualize Results in Grafana:
+View the predictions on the Grafana dashboard (`localhost:3000`)
+
+---
+
 ## Prediction results visualized from various models, showcasing the actual vs. predicted values based on input parameters like GHI and Temperature.
 
 ### **1. Linear Regression**
