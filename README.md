@@ -119,10 +119,17 @@ Performance Visualization
 Random Forest method performed better than linear regression and support regression model, as it captures the non-linearity of the dataset well. As the dataset contains more than 43,849 rows, SVR model struggles without performing additional preprocessing steps, while random forest achieves nearly 97.5% accuracy as R² score is 0.9755. Thus, out of 3 regression models, random forest gives us good performance to accuracy ratio.
 
 ### Random Forest Metrics :
-Mean Absolute Error (MAE): 0.5528913519430765
-Mean Squared Error (MSE): 0.5644339387885424
-Root Mean Squared Error (RMSE): 0.7512881862431635
-R-squared (R²): 0.9755113005363533 
+_Temperature Metrics :_ <br>
+Mean Absolute Error (MAE): 0.5528913519430765 <br>
+Mean Squared Error (MSE): 0.5644339387885424 <br>
+Root Mean Squared Error (RMSE): 0.7512881862431635 <br>
+R-squared (R²): 0.9755113005363533 <br>
+
+_GHI Metrics :_ <br>
+Mean Absolute Error (MAE): 37.355814632366354 <br>
+Mean Squared Error (MSE): 6452.568767013318 <br>
+Root Mean Squared Error (RMSE): 80.32788287396424 <br>
+R-squared (R²): 0.938099717335316 <br>
 
 ### **1. Linear Regression**
 
@@ -132,6 +139,18 @@ R-squared (R²): 0.9755113005363533
 - **Actual vs Predicted Temperature**  
   <img src="predictions_results/linear_regression_actual_vs_pred_temp.png" height="300">
 
+_Temperature Metrics :_ <br>
+Mean Absolute Error (MAE): 3.3499192136786125 <br>
+Mean Squared Error (MSE): 19.45326539183867 <br>
+Root Mean Squared Error (RMSE): 4.410585606451673 <br>
+R-squared (R²): 0.1559948170555182 <br>
+
+_GHI Metrics :_ <br>
+Mean Absolute Error (MAE): 239.01596615620102 <br>
+Mean Squared Error (MSE): 148356.77895149155 <br>
+Root Mean Squared Error (RMSE): 4.410585606451673 <br>
+R-squared (R²): -0.42320475517690825 <br>
+
 ### **2. Support Vector Regression (SVR)**
 
 - **Actual vs Predicted GHI**  
@@ -139,6 +158,18 @@ R-squared (R²): 0.9755113005363533
 
 - **Actual vs Predicted Temperature**  
   <img src="predictions_results/SVR_actual_vs_pred_temp.png" height="300">
+
+_Temperature Prediction Metrics:_ <br>
+Mean Absolute Error (MAE): 1.1168709530280416 <br>
+Mean Squared Error (MSE): 2.1421797747223588 <br>
+Root Mean Squared Error (RMSE): 1.4636187258717206 <br>
+R-squared (R²): 0.9070587484287838 <br>
+
+_GHI Prediction Metrics:_ <br>
+Mean Absolute Error (MAE): 76.64484043904731 <br>
+Mean Squared Error (MSE): 11821.021878633164 <br>
+Root Mean Squared Error (RMSE): 108.72452289448395 <br>
+R-squared (R²): 0.8865994889642227 <br>
 
 ### **3. Random Forest**
 
