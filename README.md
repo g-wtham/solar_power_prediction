@@ -58,6 +58,61 @@ cd solar_power_prediction
 View the predictions on the Grafana dashboard (`localhost:3000`)
 
 ---
+## Code Explanation :
+
+_Data Preparation and Processing_
+
+Visit NSRDB (https://nsrdb.nrel.gov/data-viewer) and enter your locality latitude & longitude coordinates. Choose the available dataset. You will receive a mail with the link to the dataset, valid for 24 hrs. Download before it expires!
+
+The system begins by importing weather data from a CSV file containing historical measurements from 2017-2020. The preprocessing steps include:
+- Cleaning data by replacing zero values with NaN
+- Calculating non-zero means for accurate weightage
+- Splitting data into five input features plus temperature and GHI as target variables
+
+_Model Architecture_
+
+1. Linear Regression Implementation
+- Utilizes sklearn's LinearRegression for both temperature and GHI prediction
+- Performance metrics include MAE, MSE, RMSE, and R-squared values
+- Visualizes results through kernel density estimation plots
+
+2. Support Vector Regression Enhancement
+- Implements RBF kernel for capturing non-linear relationships
+- Features standardization using StandardScaler for better model performance
+- Includes inverse transformation to convert standardized predictions back to original scale
+
+3. Random Forest Approach
+- Uses ensemble learning with multiple decision trees
+- Separate models for temperature and GHI predictions
+- Provides better handling of complex non-linear relationships
+
+_Prediction Pipeline_
+
+Time Series Processing
+- System generates predictions every 10 minutes
+- Converts datetime components into feature vectors
+- Processes year, month, day, hour, and minute as separate features and passes those into PostgreSQL database
+
+Power Calculation Algorithm
+The solar power calculation follows a specific formula:
+1. Initial power factor calculation:  f = 0.18 × 7.4322 × GHI
+2. Temperature difference: insi = Temperature - 25
+3. Temperature coefficient: midd = 1 - 0.05 × insi
+4. Final power output: Power = f × midd
+
+Pass the power output value along with GHI, Temperature into the database.
+
+Database Integration
+- PostgreSQL database stores predictions
+- Separate tables for each prediction method
+- Stores timestamp, temperature, GHI, and calculated power
+- Handles database connections with error management
+
+
+Performance Visualization
+- Implements kernel density estimation plots
+- Compares actual vs predicted values for both temperature and GHI
+- Provides visual assessment of model accuracy
 
 ## Prediction results visualized from various models, showcasing the actual vs. predicted values based on input parameters like GHI and Temperature.
 
